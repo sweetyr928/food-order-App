@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import mealsImage from "../../assets/meals.jpg";
-// import HeaderCartButton from './HeaderCartButton';
+import HeaderCartButton from "./HeaderCartButton";
 
 const StyledHeader = styled.div`
   position: fixed;
@@ -39,12 +39,13 @@ const StyledImage = styled.div`
   }
 `;
 
-export const Header = () => {
+// TODO: onShowCart type 변경
+export const Header = ({ onShowCart }) => {
   return (
     <>
       <StyledHeader>
         <h1>My food order App</h1>
-        <button>Cart</button>
+        <HeaderCartButton onClick={onShowCart} />
       </StyledHeader>
       <StyledImage>
         <img src={mealsImage} alt="A table full of delicious food!" />
