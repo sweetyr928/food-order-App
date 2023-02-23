@@ -1,21 +1,28 @@
 import styled from "styled-components";
-// import mealsImage from '../../assets/meals.jpg';
+import mealsImage from "../../assets/meals.jpg";
 // import HeaderCartButton from './HeaderCartButton';
 
 const StyledHeader = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   height: 5rem;
   background-color: #8a2b06;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10%;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   z-index: 10;
+
+  h1 {
+    margin: 0px 0px 0px 100px;
+  }
+
+  button {
+    margin: 0px 100px 0px 0px;
+  }
 `;
 
 const StyledImage = styled.div`
@@ -36,11 +43,11 @@ export const Header = () => {
   return (
     <>
       <StyledHeader>
-        <h1>ReactMeals</h1>
-        {/* <HeaderCartButton onClick={props.onShowCart} /> */}
+        <h1>My food order App</h1>
+        <button>Cart</button>
       </StyledHeader>
       <StyledImage>
-        {/* <img src={mealsImage} alt='A table full of delicious food!' /> */}
+        <img src={mealsImage} alt="A table full of delicious food!" />
       </StyledImage>
     </>
   );
