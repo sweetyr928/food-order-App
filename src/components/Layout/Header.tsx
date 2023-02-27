@@ -40,7 +40,7 @@ const StyledImage = styled.div`
 `;
 
 // TODO: onShowCart type 변경
-export const Header = ({ onShowCart }) => {
+const Header = ({ onShowCart }) => {
   return (
     <>
       <StyledHeader>
@@ -53,3 +53,5 @@ export const Header = ({ onShowCart }) => {
     </>
   );
 };
+
+export default Header;
