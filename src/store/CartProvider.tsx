@@ -2,20 +2,14 @@
 
 import { ReactNode, useReducer } from "react";
 
-import CartContext from "./cart-context";
-
-interface Item {
-  id: string;
-  name: string;
-  amount: number;
-  price: number;
-}
+import CartContext, { Item } from "./cart-context";
 
 const defaultCartState = {
   items: ([] = []),
   totalAmount: 0,
 };
 
+// TODO: state, action type 지정
 const cartReducer = (state: any, action: any) => {
   if (action.type === "ADD") {
     const updatedTotalAmount =
