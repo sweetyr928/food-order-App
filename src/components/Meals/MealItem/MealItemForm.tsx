@@ -37,6 +37,7 @@ const MealItemForm = ({
     e.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
+    // enteredAmount 타입을 number로 변경
     const enteredAmountNumber = +enteredAmount;
 
     if (

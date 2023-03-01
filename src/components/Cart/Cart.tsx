@@ -51,22 +51,22 @@ const StyledActions = styled.div`
   }
 `;
 
-const Cart = ({ onClose }: { onClose: () => void }) => {
+const Cart = ({ onCloseCart }: { onCloseCart: () => void }) => {
   const cartCtx = useContext(CartContext);
 
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
 
-  const cartItemRemoveHandler = (id: string) => {
+  const handleItemRemove = (id: string) => {
     cartCtx.removeItem(id);
   };
 
-  const cartItemAddHandler = (item: Item) => {
+  const handleItemAdd = (item: Item) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
 
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onCloseCart}>
       <StyledUl>
         {cartCtx.items.map((item: Item) => (
           <CartItem
@@ -74,8 +74,8 @@ const Cart = ({ onClose }: { onClose: () => void }) => {
             name={item.name}
             amount={item.amount}
             price={item.price}
-            onRemove={cartItemRemoveHandler.bind(null, item.id)}
-            onAdd={cartItemAddHandler.bind(null, item)}
+            onRemove={handleItemRemove.bind(null, item.id)}
+            onAdd={handleItemAdd.bind(null, item)}
           />
         ))}
       </StyledUl>
@@ -84,7 +84,7 @@ const Cart = ({ onClose }: { onClose: () => void }) => {
         <span>{totalAmount}</span>
       </StyledToTal>
       <StyledActions>
-        <button className="close" onClick={onClose}>
+        <button className="close" onClick={onCloseCart}>
           Close
         </button>
         {hasItems && <button className="order">Order</button>}
