@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 
-const StyledInputWrapper = styled.input`
+const StyledInputWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 0.5rem;

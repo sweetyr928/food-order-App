@@ -1,7 +1,7 @@
 import MealsSummary from "./MealsSummary";
 import AvailableMeals from "./AvailableMeals";
 
-export const Meals = () => {
+const Meals = () => {
   return (
     <>
       <MealsSummary />
@@ -9,3 +9,5 @@ export const Meals = () => {
     </>
   );
 };
+
+export default Meals;

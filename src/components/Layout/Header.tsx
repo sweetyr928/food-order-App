@@ -40,7 +40,7 @@ const StyledImage = styled.div`
 `;
 
 // TODO: onShowCart type 변경
-const Header = ({ onShowCart }) => {
+const Header = ({ onShowCart }: { onShowCart: () => void }) => {
   return (
     <>
       <StyledHeader>
