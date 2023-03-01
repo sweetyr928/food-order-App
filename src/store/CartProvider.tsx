@@ -71,7 +71,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     dispatchCartAction({ type: "ADD", item: item });
   };
 
-  const removeItemFromCartHandler = (id: number) => {
+  const removeItemFromCartHandler = (id: string) => {
     dispatchCartAction({ type: "REMOVE", id: id });
   };
 

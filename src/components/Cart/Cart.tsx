@@ -57,7 +57,7 @@ const Cart = ({ onClose }: { onClose: () => void }) => {
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const hasItems = cartCtx.items.length > 0;
 
-  const cartItemRemoveHandler = (id: number) => {
+  const cartItemRemoveHandler = (id: string) => {
     cartCtx.removeItem(id);
   };
 
@@ -68,7 +68,7 @@ const Cart = ({ onClose }: { onClose: () => void }) => {
   return (
     <Modal onClose={onClose}>
       <StyledUl>
-        {cartCtx.items.map((item) => (
+        {cartCtx.items.map((item: Item) => (
           <CartItem
             key={item.id}
             name={item.name}

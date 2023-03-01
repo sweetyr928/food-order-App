@@ -39,13 +39,12 @@ const StyledImage = styled.div`
   }
 `;
 
-// TODO: onShowCart type 변경
 const Header = ({ onShowCart }: { onShowCart: () => void }) => {
   return (
     <>
       <StyledHeader>
         <h1>My food order App</h1>
-        <HeaderCartButton onClick={onShowCart} />
+        <HeaderCartButton onShowCart={onShowCart} />
       </StyledHeader>
       <StyledImage>
         <img src={mealsImage} alt="A table full of delicious food!" />

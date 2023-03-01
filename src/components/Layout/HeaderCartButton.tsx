@@ -67,7 +67,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const HeaderCartButton = ({ onClick }: { onClick: () => void }) => {
+const HeaderCartButton = ({ onShowCart }: { onShowCart: () => void }) => {
   const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
   const cartCtx = useContext(CartContext);
 
@@ -94,7 +94,10 @@ const HeaderCartButton = ({ onClick }: { onClick: () => void }) => {
   }, [items]);
 
   return (
-    <StyledButton className={btnIsHighlighted ? "bump" : ""} onClick={onClick}>
+    <StyledButton
+      className={btnIsHighlighted ? "bump" : ""}
+      onClick={onShowCart}
+    >
       <span className="icon">
         <CartIcon />
       </span>
