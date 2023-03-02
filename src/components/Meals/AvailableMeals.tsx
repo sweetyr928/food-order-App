@@ -1,6 +1,8 @@
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const StyledSection = styled.section`
   max-width: 60rem;
@@ -27,39 +29,54 @@ const StyledSection = styled.section`
   }
 `;
 
-const DUMMY_MEALS = [
-  {
-    id: "m1",
-    name: "Sushi",
-    description: "Finest fish and veggies",
-    price: 22.99,
-  },
-  {
-    id: "m2",
-    name: "Schnitzel",
-    description: "A german specialty!",
-    price: 16.5,
-  },
-  {
-    id: "m3",
-    name: "Barbecue Burger",
-    description: "American, raw, meaty",
-    price: 12.99,
-  },
-  {
-    id: "m4",
-    name: "Green Bowl",
-    description: "Healthy...and green...",
-    price: 18.99,
-  },
-];
+const StyledLoading = styled.section`
+  text-align: center;
+  color: white;
+`;
 
 const AvailableMeals = () => {
+  const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchMeals = async () => {
+      const res = await axios.get(
+        "https://react-practice-1d62f-default-rtdb.firebaseio.com/meals.json"
+      );
+
+      const loadedMeals = [];
+
+      for (const key in res.data) {
+        loadedMeals.push({
+          id: key,
+          name: res.data[key].name,
+          description: res.data[key].description,
+          price: res.data[key].price,
+        });
+      }
+
+      setMeals(loadedMeals);
+      setIsLoading(false);
+    };
+
+    try {
+      fetchMeals();
+    } catch (e: any) {
+      setIsLoading(false);
+      throw e;
+    }
+  }, []);
+
   return (
     <StyledSection>
       <Card>
+        {isLoading && (
+          <StyledLoading>
+            <p>Loading...</p>
+          </StyledLoading>
+        )}
         <ul>
-          {DUMMY_MEALS.map((meal) => (
+          {meals.map((meal) => (
             <MealItem
               key={meal.id}
               id={meal.id}
