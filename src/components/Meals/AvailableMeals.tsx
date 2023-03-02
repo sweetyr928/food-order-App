@@ -3,6 +3,7 @@ import MealItem from "./MealItem/MealItem";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Item } from "../../store/cart-context";
 
 const StyledSection = styled.section`
   max-width: 60rem;
@@ -29,14 +30,21 @@ const StyledSection = styled.section`
   }
 `;
 
+export interface IMeal {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
 const StyledLoading = styled.section`
   text-align: center;
   color: white;
 `;
 
 const AvailableMeals = () => {
-  const [meals, setMeals] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [meals, setMeals] = useState<IMeal[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchMeals = async () => {

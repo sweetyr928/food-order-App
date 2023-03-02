@@ -68,7 +68,7 @@ const StyledButton = styled.button`
 `;
 
 const HeaderCartButton = ({ onShowCart }: { onShowCart: () => void }) => {
-  const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);
+  const [btnIsHighlighted, setBtnIsHighlighted] = useState<boolean>(false);
   const cartCtx = useContext(CartContext);
 
   const { items } = cartCtx;
